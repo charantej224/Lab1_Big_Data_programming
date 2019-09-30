@@ -1,0 +1,37 @@
+hadoop fs -mkdir /user/cloudera/lab1/
+hadoop fs -mkdir /user/cloudera/lab1/problem2/ /user/cloudera/lab1/problem2/input/
+hadoop fs -put youtubedata.txt /user/cloudera/lab1/problem2/input/
+hadoop fs -ls /user/cloudera/lab1/problem2/input/
+
+##########################################################################
+Classpath setting
+
+export CLASSPATH=/usr/lib/hadoop/client-0.20/\*:/usr/lib/hadoop/\*
+
+#display the value of CLASSPATH
+echo $CLASSPATH
+/usr/lib/hadoop/client-0.20/*:/usr/lib/hadoop/*
+
+#compile the class, save it to the wordcount_classes directory
+javac -d build/ src/main/java/com/lab/mapreduce/*.java
+
+#make the .jar file, which is to be used for directing word count job in Hadoop
+jar -cvf lab1_mapreduce.jar -C build/ .
+
+hadoop jar lab1_mapreduce.jar com.lab.mapreduce.MovieMain /user/cloudera/lab1/problem2/input/ /user/cloudera/lab1/problem2/output1/
+
+hadoop fs -cat /user/cloudera/lab1/problem2/output1/part-r-00000 | sort -n -k2 -r | head -n5
+
+hadoop jar lab1_mapreduce.jar com.lab.mapreduce.RatedVedioMain /user/cloudera/lab1/problem2/input/ /user/cloudera/lab1/problem2/output2/
+
+hadoop fs -cat /user/cloudera/lab1/problem2/output2/part-r-00000 | sort -n -k2 -r | head -n10
+
+hadoop fs -mkdir /user/cloudera/lab1/problem1/ /user/cloudera/lab1/problem1/input/
+
+hadoop fs -put facebookfriends.txt /user/cloudera/lab1/problem1/input/
+
+hadoop jar lab1_mapreduce.jar com.lab.mapreduce.FacebookFriendsMain /user/cloudera/lab1/problem1/input/ /user/cloudera/lab1/problem1/output/
+
+hadoop fs -cat /user/cloudera/lab1/problem1/output/part-r-00000
+
+##########################################################################

@@ -1,0 +1,22 @@
+package com.lab.mapreduce;
+
+import java.util.SortedSet;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class FacebookFriendsReducer extends Reducer<Text, Text, Text, Text> {
+
+	@Override
+	public void reduce(Text inputKey, Iterable<Text> inputValues, Context context) {
+		String outputKey = inputKey.toString();
+		for (Text eachValue : inputValues){
+			
+			 for(String token : eachValue.toString().split(("\\s+"))){
+				 
+			 }
+		}
+
+	}
+
+}

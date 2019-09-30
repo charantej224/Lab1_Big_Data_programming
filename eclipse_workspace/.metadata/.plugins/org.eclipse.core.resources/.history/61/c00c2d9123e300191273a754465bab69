@@ -1,0 +1,26 @@
+package com.lab.mapreduce;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class FacebookFriendsReducer extends Reducer<Text, Text, Text, Text> {
+
+	@Override
+	public void reduce(Text inputKey, Iterable<Text> inputValues, Context context) {
+		String outputKey = inputKey.toString();
+		String outputValue = " -> ( ";
+		for (Text eachValue : inputValues){
+			Set<String> tokenSet = new HashSet<>(); 
+			 for(String token : eachValue.toString().split(("\\s+"))){
+				 if(tokenSet.contains(token)){
+					 outputValue += token + " ";
+				 }
+			 }
+		}
+
+	}
+
+}

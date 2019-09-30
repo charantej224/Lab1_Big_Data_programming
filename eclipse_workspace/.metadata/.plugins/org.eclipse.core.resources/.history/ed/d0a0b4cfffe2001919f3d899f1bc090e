@@ -1,0 +1,11 @@
+package com.lab.mapreduce;
+/**
+ * 
+ * @author Charan
+ * Use the reducer to reduce the map and writes it out as a file, 
+ * further using HDFS commands we can get the values.
+ *
+ */
+public class RatedReducer {
+
+}

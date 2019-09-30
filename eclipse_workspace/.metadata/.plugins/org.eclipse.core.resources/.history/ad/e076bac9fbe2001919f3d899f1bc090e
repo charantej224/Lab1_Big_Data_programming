@@ -1,0 +1,7 @@
+package com.lab.mapreduce;
+
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class RatedMapper extends Mapper<KEYIN, VALUEIN, KEYOUT, VALUEOUT>{
+
+}

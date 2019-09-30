@@ -1,6 +1,7 @@
 # Compiled class file
 *.class
-
+./eclipse_workspace/.metadata/
+./eclipse_workspace/.recommenders/
 # Log file
 *.log
 
