@@ -1,0 +1,8 @@
+solrctl instancedir --generate  /tmp/episodes
+solrctl instancedir --create episodes /tmp/episodes
+solrctl collection --create episodes
+
+gedit /tmp/episodes/conf/schema.xml
+
+solrctl instancedir --update episodes /tmp/episodes
+solrctl collection --reload episodes

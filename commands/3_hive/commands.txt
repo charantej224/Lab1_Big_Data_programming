@@ -1,0 +1,6 @@
+
+* Before running the commands the input file needs to be processed by using java class "FileUtils.java"
+
+hive -f 1_create_heroinfo.hql
+hive -f 2_load_heroinfo.hql
+hive -f 3_queries.hql >> query.log
